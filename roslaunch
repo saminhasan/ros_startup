@@ -1,0 +1,7 @@
+#!/bin/bash
+source ~/catkin_ws/devel/setup.bash
+source /etc/ros/env.sh
+export ROS_HOME=$(echo ~/pi/.ros)
+roslaunch gy_87 gy_87.launch & rosrun nmea_navsat_driver nmea_serial_driver _port:=/dev/serial0 _baud:=9600 &
+PID=$!
+wait "$PID"
